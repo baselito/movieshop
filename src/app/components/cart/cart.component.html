@@ -1,0 +1,11 @@
+<div *ngFor="let cartMovie of cartMovies">
+    <div>{{cartMovie.name}}{{cartMovie.quantity}}{{cartMovie.price}}{{cartMovie.totalPrice}}</div>
+    <button (click)="plusBtn(cartMovie)">+</button>
+    <button (click)="minusBtn(cartMovie)">-</button>
+    <button (click)="deleteBtn(cartMovie)">x</button>
+</div>
+
+<div *ngIf="cartMovies.length > 0">
+    
+    <button (click)="sendToCheckout()">Check out</button>
+</div>

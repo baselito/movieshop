@@ -1,0 +1,12 @@
+<body>
+  <div class="bigcontainer">
+    <div *ngFor="let movie of movies">
+      <div class="moviecontainer">
+        <img src="{{ movie.imageUrl }}" />
+        <p>{{ movie.name }}</p>
+        <button mat-stroked-button (click)="buyMovie(movie)">Buy</button>
+        {{ movie.price + " kr" }}
+      </div>
+    </div>
+  </div>
+</body>

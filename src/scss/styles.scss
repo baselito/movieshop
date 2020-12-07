@@ -1,0 +1,140 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$movieshop-primary: mat-palette($mat-indigo);
+$movieshop-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$movieshop-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$movieshop-theme: mat-light-theme(
+  (
+    color: (
+      primary: $movieshop-primary,
+      accent: $movieshop-accent,
+      warn: $movieshop-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($movieshop-theme);
+
+@import "./mixins";
+@import "./variables";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: start;
+}
+
+nav {
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  background: #5bc3eb;
+  a.active {
+    color: #e7f9a9;
+  }
+}
+
+footer {
+  width: 100%;
+  padding: 16px;
+  text-align: center;
+}
+
+.bigcontainer {
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  align-items: normal;
+  display: inline-block;
+  overflow: auto;
+}
+
+div {
+  display: inline-block;
+  width: 200px;
+  height: 400px;
+  padding: 10px;
+
+  .moviecontainer {
+    width: 200px;
+    padding: 10px;
+    justify-content: start;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      align-items: flex-start;
+    }
+  }
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
