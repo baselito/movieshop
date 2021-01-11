@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { CartComponent } from './components/cart/cart.component';
-import { MoviePresentationComponent } from './components/movie-presentation/movie-presentation.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
-  // { path: 'movie-presentation', component: MoviePresentationComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'admin', component: AdminComponent },
   { path: '', component: MoviesComponent /*, pathMatch: 'full' */ },
   { path: '**', component: NotfoundComponent },

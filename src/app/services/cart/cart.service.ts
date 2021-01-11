@@ -1,26 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { ICartMovies } from 'src/app/models/ICart';
+import { of } from 'rxjs';
+import { ICartMovies, Checkout } from 'src/app/models/ICart';
 import { IMovies } from 'src/app/models/IMovies';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cartObserver = new Subject<ICartMovies>();
-  cartObserver$ = this.cartObserver.asObservable();
-
-  cart: ICartMovies[] = [];
-  // quantity = 1;
-  // checkOutActive = false;
+  // cart: ICartMovies[] = [];
+  checkout: Checkout = new Checkout();
 
   constructor() {}
 
-  getItems(): ICartMovies[] {
-    return this.cart;
-}
+  // tslint:disable-next-line: typedef
+  // calculateTotalPrice() {
+  //   this.checkout.total = 0;
+  //   for (const total of this.cart) {
+  //     this.checkout.total += total.totalPrice;
+  //   }
+  // }
 
+  getItems(): ICartMovies[] {
+    return this.checkout.getCartMovies();
+  }
+
+  getTotal(): number {
+    return this.checkout.getTotal();
+  }
 
   movieToCart(recievedMovie: IMovies): void {
     const newMovie: ICartMovies = {
@@ -31,53 +38,19 @@ export class CartService {
       imageUrl: recievedMovie.imageUrl,
       quantity: 1,
     };
-    const foundMovie = this.cart.find(
-      (searchMovies) => searchMovies.id === newMovie.id);
-    if (foundMovie) {
-      const oldMovie = foundMovie;
-      // tslint:disable-next-line: no-shadowed-variable
-      const newMovie = {
-        ...oldMovie,
-        totalPrice: oldMovie.price * (oldMovie.quantity + 1),
-        quantity: oldMovie.quantity + 1,
-      };
-      this.cart.splice(this.cart.indexOf(oldMovie), 1, newMovie);
-      console.log(this.cart);
-    } else {
-      this.cart.push(newMovie);
-      console.log(this.cart);
-    }
+
+    this.checkout.addOrIncreaseMovie(newMovie);
   }
 
   plus(movie: ICartMovies): void {
-    if ( movie.quantity >= 1) {
-      const oldMovie = movie;
-      // tslint:disable-next-line: no-shadowed-variable
-      const newMovie = {
-        ...oldMovie,
-        totalPrice: oldMovie.price * (oldMovie.quantity + 1),
-        quantity: oldMovie.quantity + 1,
-      };
-      this.cart.splice(this.cart.indexOf(oldMovie), 1, newMovie);
-      console.log(this.cart);
-    }
+    this.checkout.addOrIncreaseMovie(movie);
   }
 
   minus(movie: ICartMovies): void {
-    if (movie.quantity > 1) {
-      const oldMovie = movie;
-      // tslint:disable-next-line: no-shadowed-variable
-      const newMovie = {
-        ...oldMovie,
-        totalPrice: oldMovie.price * (oldMovie.quantity - 1),
-        quantity: oldMovie.quantity - 1,
-      };
-      this.cart.splice(this.cart.indexOf(oldMovie), 1, newMovie);
-      console.log(this.cart);
+    this.checkout.decreaseMovieQuantity(movie);
   }
-    }
+
   delete(movie: ICartMovies): void {
-    this.cart.splice(this.cart.indexOf(movie), 1);
-    console.log(this.cart);
+    this.checkout.removeMovie(movie);
   }
 }

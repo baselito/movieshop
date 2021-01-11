@@ -1,0 +1,20 @@
+<p>CHECK OUT</p>
+
+<p>
+    Totla Price: {{totalPrice}}
+</p>
+
+<div>
+<select [(ngModel)]="order.paymentMethod">
+    <option value="0">Paypal</option>
+    <option value="1">Mastercard</option>
+    <option value="2">Visa</option>
+</select>
+</div>
+<div>
+    <input [(ngModel)]="order.createdBy">
+</div>
+
+<button type="button" [disabled]="clicked" (click)="sendOrder(); clicked = true">Send order</button>
+
+<div *ngIf="isShown">ORDER SENT</div>

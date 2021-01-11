@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, provideRoutes } from '@angular/router';
-import { ICartMovies, ICheckout } from 'src/app/models/ICart';
-import { IMovies } from 'src/app/models/IMovies';
+import { ICartMovies, Checkout } from 'src/app/models/ICart';
 import { CartService } from 'src/app/services/cart/cart.service';
-import { MoviePresentationComponent } from '../movie-presentation/movie-presentation.component';
-import { OrderService } from 'src/app/services/order/order.service';
-import { Subject } from 'rxjs';
+import { CheckoutService } from 'src/app/services/checkout/checkout.service';
+import { CheckoutComponent } from '../checkout/checkout.component';
 
 @Component({
   selector: 'app-cart',
@@ -13,19 +11,15 @@ import { Subject } from 'rxjs';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
-  constructor(private cartservice: CartService, private route: ActivatedRoute, private orderservice: OrderService) {}
+  constructor(
+    private cartservice: CartService,
+    private checkoutservice: CheckoutService
+  ) {}
 
-
-  cart = new Subject<ICartMovies[]>();
-  cart$ = this.cart.asObservable();
-
-  cartMovies: ICartMovies[];
-  checkout: ICheckout[];
-
-
+  totalCart: ICartMovies[];
 
   ngOnInit(): void {
-    this.cartMovies = this.cartservice.getItems();
+    this.totalCart = this.cartservice.getItems();
   }
 
   plusBtn(movie): void {
@@ -36,9 +30,5 @@ export class CartComponent implements OnInit {
   }
   deleteBtn(movie): void {
     this.cartservice.delete(movie);
-  }
-  sendToCheckout(cartMovies): void {
-    console.log('Send' , this.cartMovies);
-    // this.orderservice.checkedOut(this.cart);
   }
 }

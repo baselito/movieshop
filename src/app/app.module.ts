@@ -5,27 +5,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './components/movies/movies.component';
-import { AddMovieComponent } from './components/add-movie/add-movie.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { MoviePresentationComponent } from './components/movie-presentation/movie-presentation.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    AddMovieComponent,
     CartComponent,
     AdminComponent,
-    MoviePresentationComponent,
     NotfoundComponent,
     NavbarComponent,
     HeaderComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +32,7 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

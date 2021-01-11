@@ -7,12 +7,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class MovieService {
-  // movies = new Subject<IMovies[]>();
-  // movies$ = this.movies.asObservable();
-
-  // boughtMovie = new Subject<IMovies[]>();
-  // boughtMovie$ = this.boughtMovie.asObservable();
-
   constructor(private http: HttpClient) {}
 
   getMovies(): Observable<IMovies[]> {
