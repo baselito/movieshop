@@ -1,17 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Testability } from '@angular/core';
-import { ICartMovies, ICheckout } from 'src/app/models/ICart';
+import { Observable } from 'rxjs';
+import { ICartMovies, Checkout, CheckoutInput } from 'src/app/models/ICart';
+import { IMovies } from 'src/app/models/IMovies';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderService {
+  order: Checkout = new Checkout();
 
-  checkoutMovies: ICartMovies[];
-  checkout: ICheckout[];
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
-
-  checkedOut(cart: ICartMovies): void {
-    // this.checkoutMovies.push(cart);
+  getOrder(orderNumber: number): Observable<CheckoutInput> {
+    return this.http.get<CheckoutInput>(
+      `https://medieinstitutet-wie-products.azurewebsites.net/api/orders/${orderNumber}`
+    );
   }
 }

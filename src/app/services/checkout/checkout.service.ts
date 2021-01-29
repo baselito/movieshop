@@ -31,7 +31,7 @@ export class CheckoutService {
     }
     {"id":5959,"productId":76,"product":null,"amount":2,"orderId":5016}]}
     */
-    let order = {
+    const order = {
       companyId: 333,
       created: new Date(),
       createdBy: input.createdBy,

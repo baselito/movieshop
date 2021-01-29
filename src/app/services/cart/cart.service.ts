@@ -53,4 +53,8 @@ export class CartService {
   delete(movie: ICartMovies): void {
     this.checkout.removeMovie(movie);
   }
+
+  clear(): void {
+    this.checkout.clearCartMovies();
+  }
 }

@@ -26,6 +26,10 @@ export class Checkout {
     return this.cartMovies;
   }
 
+  clearCartMovies(): ICartMovies[] {
+    return (this.cartMovies = []);
+  }
+
   addOrIncreaseMovie(cartMovie: ICartMovies): void {
     const movie = this.updateItem(cartMovie, 1);
     if (!movie) {
