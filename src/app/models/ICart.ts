@@ -5,6 +5,8 @@ export interface ICartMovies {
   totalPrice: number;
   imageUrl: string;
   quantity: number;
+  productId: number;
+  amount: number;
 }
 
 export class Checkout {

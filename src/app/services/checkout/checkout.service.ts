@@ -45,6 +45,7 @@ export class CheckoutService {
       order.orderRows.push({
         productId: x.id,
         amount: x.quantity,
+        name: 'my name',
       });
     });
 

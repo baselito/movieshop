@@ -1,1 +1,25 @@
 <p>admin works!</p>
+
+<input type="text" [(ngModel)]="orderNumber" />
+
+<br/>
+<button (click)="getOrder()">Get Order</button>
+<br />
+<p>Created By: {{order.createdBy }}</p>
+<p>Total Price: {{order.totalPrice }}</p>
+<div class="bigcontainer" *ngIf="movies">
+    <div *ngFor="let movie of movies">
+      <div class="moviecontainer">
+        <img src="{{ movie.imageUrl }}" />
+        <p>{{ movie.name }}</p>
+
+        {{ movie.price + " kr" }}
+      </div>
+    </div>
+    <div *ngIf="movies.length > 0">
+        <button (click)="delete()">Delete Order</button>
+    </div>
+    <div *ngIf="notFound">
+        <strong>This order is no longer available!</strong>
+    </div>
+  </div>

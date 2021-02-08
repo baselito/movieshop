@@ -1,6 +1,6 @@
+import { IMovies } from './../../models/IMovies';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { IMovies } from 'src/app/models/IMovies';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -13,7 +13,6 @@ export class MovieService {
     return this.http.get<IMovies[]>(
       'https://medieinstitutet-wie-products.azurewebsites.net/api/products'
     );
-
     // .subscribe(
     //   (movies: IMovies[]) => {
     //     this.movies.next(movies);
@@ -25,6 +24,12 @@ export class MovieService {
     //     console.log('Get movies completed');
     //   }
     // );
+  }
+
+  getMovie(movieNumber: number): Observable<IMovies> {
+    return this.http.get<IMovies>(
+      `https://medieinstitutet-wie-products.azurewebsites.net/api/products/${movieNumber}`
+    );
   }
 
   // buyMovie(movie): void {

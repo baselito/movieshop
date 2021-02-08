@@ -37,6 +37,7 @@ export class CartService {
       totalPrice: recievedMovie.price,
       imageUrl: recievedMovie.imageUrl,
       quantity: 1,
+      productId: recievedMovie.id,
     };
 
     this.checkout.addOrIncreaseMovie(newMovie);

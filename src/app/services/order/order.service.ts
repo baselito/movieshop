@@ -17,4 +17,10 @@ export class OrderService {
       `https://medieinstitutet-wie-products.azurewebsites.net/api/orders/${orderNumber}`
     );
   }
+
+  deleteOrder(orderNumber: number): Observable<void> {
+    return this.http.delete<void>(
+      `https://medieinstitutet-wie-products.azurewebsites.net/api/orders/${orderNumber}`
+    );
+  }
 }
