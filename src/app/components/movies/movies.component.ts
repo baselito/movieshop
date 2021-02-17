@@ -15,6 +15,8 @@ import { ICartMovies } from 'src/app/models/ICart';
 export class MoviesComponent implements OnInit {
   movies: IMovies[] = [];
 
+  title = 'Movieshop';
+
   buyMovie(movie): void {
     this.cartservice.movieToCart(movie);
   }

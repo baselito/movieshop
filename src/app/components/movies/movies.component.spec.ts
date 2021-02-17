@@ -8,9 +8,8 @@ describe('MoviesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoviesComponent ]
-    })
-    .compileComponents();
+      declarations: [MoviesComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +21,10 @@ describe('MoviesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'Movieshop'`, async(() => {
+    const fixture = TestBed.createComponent(MoviesComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('Movieshop');
+  }));
 });
