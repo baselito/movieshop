@@ -1,4 +1,6 @@
+import { MovieService } from 'src/app/services/movie/movie.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import MovieserviceMock from 'src/app/services/movie/movie.service.mock';
 
 import { MoviesComponent } from './movies.component';
 
@@ -9,6 +11,7 @@ describe('MoviesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MoviesComponent],
+      providers: [{ provide: MovieService, useClass: MovieserviceMock }],
     }).compileComponents();
   }));
 
@@ -18,13 +21,11 @@ describe('MoviesComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  // it('should create', () => {
+  //   expect(component).toBeTruthy();
+  // });
 
-  it(`should have as title 'Movieshop'`, async(() => {
-    const fixture = TestBed.createComponent(MoviesComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Movieshop');
-  }));
+  it('should get more than 2 movies when loading', () => {
+    expect(component.movies.length).toBeGreaterThan(1);
+  });
 });

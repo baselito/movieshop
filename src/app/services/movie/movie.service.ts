@@ -3,10 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+export interface IMovieService {
+  getMovies(): void;
+}
+
 @Injectable({
   providedIn: 'root',
 })
-export class MovieService {
+export class MovieService implements IMovieService {
   constructor(private http: HttpClient) {}
 
   getMovies(): Observable<IMovies[]> {
