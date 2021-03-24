@@ -1,10 +1,14 @@
+import { Subject } from 'rxjs';
 import { IMovies } from '../../models/IMovies';
 import { IMovieService } from './movie.service';
 export default class MovieserviceMock implements IMovieService {
-  movies: IMovies[] = [];
+  // movies: IMovies[] = [];
+  movies = new Subject<IMovies[]>();
+
+  // constructor() {}
 
   getMovies(): void {
-    this.movies = [
+    this.movies.next([
       {
         id: 1,
         name: 'The Matrix',
@@ -49,6 +53,6 @@ export default class MovieserviceMock implements IMovieService {
           { categoryId: 2, category: null },
         ],
       },
-    ];
+    ]);
   }
 }

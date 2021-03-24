@@ -11,12 +11,18 @@ export interface IMovieService {
   providedIn: 'root',
 })
 export class MovieService implements IMovieService {
+  movies = new Subject<IMovies[]>();
+
   constructor(private http: HttpClient) {}
 
-  getMovies(): Observable<IMovies[]> {
-    return this.http.get<IMovies[]>(
-      'https://medieinstitutet-wie-products.azurewebsites.net/api/products'
-    );
+  getMovies(): void {
+    this.http
+      .get<IMovies[]>(
+        'https://medieinstitutet-wie-products.azurewebsites.net/api/products'
+      )
+      .subscribe((data: IMovies[]) => {
+        this.movies.next(data);
+      });
     // .subscribe(
     //   (movies: IMovies[]) => {
     //     this.movies.next(movies);

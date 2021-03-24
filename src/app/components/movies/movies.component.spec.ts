@@ -10,8 +10,11 @@ describe('MoviesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MoviesComponent],
-      providers: [{ provide: MovieService, useClass: MovieserviceMock }],
+      declarations: [],
+      providers: [
+        MoviesComponent,
+        { provide: MovieService, useClass: MovieserviceMock },
+      ],
     }).compileComponents();
   }));
 
