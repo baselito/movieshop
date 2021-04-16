@@ -5,6 +5,8 @@ export default class MovieserviceMock implements IMovieService {
   // movies: IMovies[] = [];
   movies = new Subject<IMovies[]>();
 
+  title = 'Movieshop';
+
   // constructor() {}
 
   getMovies(): void {

@@ -31,4 +31,8 @@ describe('MoviesComponent', () => {
   it('should get more than 2 movies when loading', () => {
     expect(component.movies.length).toBeGreaterThan(1);
   });
+
+  it('The first movie in the list should have title The Matrix', () => {
+    expect(component.movies[0].name).toEqual('The Matrix');
+  });
 });
